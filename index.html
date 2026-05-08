@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Professional Delivery Challan</title>
+
+<style>
+
+@page{
+    size:A4 portrait;
+    margin:8mm;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#ececec;
+    font-size:10px;
+    padding:10px;
+}
+
+.container{
+    width:194mm;
+    min-height:277mm;
+    background:#fff;
+    margin:auto;
+    border:1px solid #000;
+    padding:8px;
+    overflow:hidden;
+}
+
+/* HEADER */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:2px solid #000;
+    padding-bottom:6px;
+}
+
+.company{
+    width:65%;
+}
+
+.company-name{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.company-title{
+    font-size:14px;
+    font-weight:bold;
+    margin:3px 0;
+}
+
+.company-address{
+    line-height:1.4;
+}
+
+.invoice-box{
+    width:33%;
+    border:1px solid #000;
+    padding:5px;
+}
+
+.invoice-box table{
+    width:100%;
+}
+
+.invoice-box td{
+    padding:3px;
+}
+
+/* COMMON */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+input,
+textarea{
+    width:100%;
+    border:none;
+    outline:none;
+    background:transparent;
+    font-size:10px;
+}
+
+textarea{
+    resize:none;
+    min-height:55px;
+}
+
+th,
+td{
+    border:1px solid #000;
+    padding:3px;
+    vertical-align:middle;
+    word-break:break-word;
+}
+
+.center{
+    text-align:center;
+}
+
+.right{
+    text-align:right;
+}
+
+.bold{
+    font-weight:bold;
+}
+
+/* PARTY */
+
+.party-table{
+    margin-top:8px;
+}
+
+/* BUTTONS */
+
+.btn-area{
+    margin:8px 0;
+    display:flex;
+    gap:6px;
+}
+
+button{
+    border:none;
+    padding:6px 12px;
+    cursor:pointer;
+    font-size:10px;
+    font-weight:bold;
+    border-radius:3px;
+}
+
+.add-btn{
+    background:#0d6efd;
+    color:#fff;
+}
+
+.print-btn{
+    background:#198754;
+    color:#fff;
+}
+
+.delete-btn{
+    background:#dc3545;
+    color:#fff;
+    width:100%;
+}
+
+/* ITEM TABLE */
+
+.item-table{
+    table-layout:fixed;
+}
+
+.item-table th{
+    background:#000;
+    color:#fff;
+    font-size:10px;
+}
+
+.item-table td{
+    height:auto;
+}
+
+/* TOTAL */
+
+.total-table{
+    width:320px;
+    margin-left:auto;
+    margin-top:8px;
+}
+
+.total-table td{
+    padding:5px;
+}
+
+/* FOOTER */
+
+.footer{
+    margin-top:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+}
+
+.terms{
+    width:55%;
+    border:1px solid #000;
+    padding:6px;
+    min-height:60px;
+}
+
+.sign{
+    width:200px;
+    text-align:center;
+}
+
+.sign-line{
+    margin-top:40px;
+    border-top:1px solid #000;
+    padding-top:4px;
+}
+
+/* PRINT */
+
+@media print{
+
+    body{
+        background:#fff;
+        padding:0;
+    }
+
+    .btn-area{
+        display:none;
+    }
+
+    .container{
+        border:none;
+        width:100%;
+        height:100%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="company">
+
+            <div class="company-name">
+                LISMOUNT TEX INDIA LLP
+            </div>
+
+            <div class="company-title">
+                DELIVERY CHALLAN
+            </div>
+
+            <div class="company-address">
+
+                BUILDING NO./FLAT NO.: 1/250-D NALLAGOUNDAN PALAYAM CHENGAPPALLI,<br>
+                TIRUPPUR, TAMILNADU - 638812<br>
+                GST NO : 33AALFL6261D1ZG
+
+            </div>
+
+        </div>
+
+        <div class="invoice-box">
+
+            <table>
+
+                <tr>
+                    <td class="bold">Invoice No</td>
+                    <td>
+                        <input type="text" value="LT/DC/26-27/018">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="bold">Date</td>
+                    <td>
+                        <input type="date">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="bold">Transport</td>
+                    <td>
+                        <input type="text" value="SELF">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="bold">Vehicle No</td>
+                    <td>
+                        <input type="text" value="TN39DU8403">
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- PARTY -->
+
+    <table class="party-table">
+
+        <tr>
+
+            <td width="50%">
+
+                <b>Consignee Details</b><br><br>
+
+                <textarea>
+M/S TRADERS & TRADERS
+NO.3A, NEHRU NAGAR,
+PALLIPALAYAM,
+ERODE - 638006
+                </textarea>
+
+            </td>
+
+            <td width="50%">
+
+                <b>Remarks</b><br><br>
+
+                <textarea>
+RETURNABLE
+NOT FOR SALE
+SENDING FOR JOB WORK
+                </textarea>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    <!-- BUTTON -->
+
+    <div class="btn-area">
+
+        <button class="add-btn" onclick="addRow()">
+            + ADD ROW
+        </button>
+
+        <button class="print-btn" onclick="window.print()">
+            PRINT
+        </button>
+
+    </div>
+
+    <!-- ITEM TABLE -->
+
+    <table class="item-table" id="itemTable">
+
+        <thead>
+
+            <tr>
+
+                <th width="5%">S.NO</th>
+                <th width="35%">PRODUCT NAME</th>
+                <th width="10%">MTR</th>
+                <th width="10%">PCS</th>
+                <th width="15%">RATE</th>
+                <th width="15%">AMOUNT</th>
+                <th width="10%">ACTION</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="tableBody">
+
+            <tr>
+
+                <td class="center sno">1</td>
+
+                <td>
+                    <input type="text" placeholder="Enter Product Name">
+                </td>
+
+                <td>
+                    <input type="number" class="mtr" value="0">
+                </td>
+
+                <td>
+                    <input type="number" class="pcs" value="0">
+                </td>
+
+                <td>
+                    <input type="number" class="rate" value="0">
+                </td>
+
+                <td>
+                    <input type="number" class="amount" readonly>
+                </td>
+
+                <td>
+                    <button class="delete-btn" onclick="deleteRow(this)">
+                        DEL
+                    </button>
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <!-- TOTAL -->
+
+    <table class="total-table">
+
+        <tr>
+
+            <td class="bold">
+                TOTAL MTR
+            </td>
+
+            <td>
+                <input type="number" id="totalMtr" readonly>
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td class="bold">
+                TOTAL PCS
+            </td>
+
+            <td>
+                <input type="number" id="totalPcs" readonly>
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td class="bold">
+                SUB TOTAL
+            </td>
+
+            <td>
+                <input type="number" id="subTotal" readonly>
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td class="bold">
+                CGST 2.5%
+            </td>
+
+            <td>
+                <input type="number" id="cgst" readonly>
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td class="bold">
+                SGST 2.5%
+            </td>
+
+            <td>
+                <input type="number" id="sgst" readonly>
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td class="bold">
+                GRAND TOTAL
+            </td>
+
+            <td>
+                <input type="number" id="grandTotal" readonly>
+            </td>
+
+        </tr>
+
+    </table>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        <div class="terms">
+
+            <b>Terms & Conditions</b><br><br>
+
+            Goods once sold will not be taken back.<br>
+            Subject to Tiruppur Jurisdiction.
+
+        </div>
+
+        <div class="sign">
+
+            <div class="sign-line">
+                Authorised Signatory
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function calculateTotals(){
+
+    let rows = document.querySelectorAll("#tableBody tr");
+
+    let totalMtr = 0;
+    let totalPcs = 0;
+    let subTotal = 0;
+
+    rows.forEach((row,index)=>{
+
+        row.querySelector(".sno").innerText = index + 1;
+
+        let mtr = parseFloat(row.querySelector(".mtr").value) || 0;
+
+        let pcs = parseFloat(row.querySelector(".pcs").value) || 0;
+
+        let rate = parseFloat(row.querySelector(".rate").value) || 0;
+
+        let amount = mtr * rate;
+
+        row.querySelector(".amount").value = amount.toFixed(2);
+
+        totalMtr += mtr;
+
+        totalPcs += pcs;
+
+        subTotal += amount;
+
+    });
+
+    let cgst = subTotal * 0.025;
+
+    let sgst = subTotal * 0.025;
+
+    let grandTotal = subTotal + cgst + sgst;
+
+    document.getElementById("totalMtr").value = totalMtr.toFixed(2);
+
+    document.getElementById("totalPcs").value = totalPcs.toFixed(2);
+
+    document.getElementById("subTotal").value = subTotal.toFixed(2);
+
+    document.getElementById("cgst").value = cgst.toFixed(2);
+
+    document.getElementById("sgst").value = sgst.toFixed(2);
+
+    document.getElementById("grandTotal").value = grandTotal.toFixed(2);
+
+}
+
+function addRow(){
+
+    let tbody = document.getElementById("tableBody");
+
+    let row = document.createElement("tr");
+
+    row.innerHTML = `
+
+        <td class="center sno"></td>
+
+        <td>
+            <input type="text" placeholder="Enter Product Name">
+        </td>
+
+        <td>
+            <input type="number" class="mtr" value="0">
+        </td>
+
+        <td>
+            <input type="number" class="pcs" value="0">
+        </td>
+
+        <td>
+            <input type="number" class="rate" value="0">
+        </td>
+
+        <td>
+            <input type="number" class="amount" readonly>
+        </td>
+
+        <td>
+            <button class="delete-btn" onclick="deleteRow(this)">
+                DEL
+            </button>
+        </td>
+
+    `;
+
+    tbody.appendChild(row);
+
+    attachEvents();
+
+    autoFitPage();
+
+    calculateTotals();
+
+}
+
+function deleteRow(button){
+
+    button.parentElement.parentElement.remove();
+
+    autoFitPage();
+
+    calculateTotals();
+
+}
+
+function attachEvents(){
+
+    document.querySelectorAll(".mtr,.pcs,.rate").forEach(input=>{
+
+        input.removeEventListener("input",calculateTotals);
+
+        input.addEventListener("input",calculateTotals);
+
+    });
+
+}
+
+function autoFitPage(){
+
+    let container = document.querySelector(".container");
+
+    let scale = 1;
+
+    if(container.scrollHeight > container.clientHeight){
+
+        scale = container.clientHeight / container.scrollHeight;
+
+        container.style.transform = "scale(" + scale + ")";
+
+        container.style.transformOrigin = "top left";
+
+    }
+    else{
+
+        container.style.transform = "scale(1)";
+
+    }
+
+}
+
+window.onload = function(){
+
+    attachEvents();
+
+    calculateTotals();
+
+    autoFitPage();
+
+};
+
+window.onresize = autoFitPage;
+
+</script>
+
+</body>
+</html>
